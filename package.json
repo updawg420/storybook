@@ -1,5 +1,12 @@
 {
   "name": "@storybook/root",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "style": "./dist/style.css",
   "scripts": {
     "ci-tests": "cd code; yarn ci-tests",
     "get-report-message": "cd scripts; yarn get-report-message",
@@ -16,7 +23,42 @@
     "upload-bench": "cd scripts; yarn upload-bench",
     "vite-ecosystem-ci:before-test": "node ./scripts/vite-ecosystem-ci/before-test.js && cd ./sandbox/react-vite-default-ts && yarn install",
     "vite-ecosystem-ci:build": "yarn task --task sandbox --template react-vite/default-ts --start-from=install",
-    "vite-ecosystem-ci:test": "yarn task --task test-runner-dev --template react-vite/default-ts --start-from=dev && yarn task --task test-runner --template react-vite/default-ts --start-from=build"
+    "vite-ecosystem-ci:test": "yarn task --task test-runner-dev --template react-vite/default-ts --start-from=dev && yarn task --task test-runner --template react-vite/default-ts --start-from=build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "dev": "bunx --bun storybook dev -p 6006",
+    "dev:cc": "bunx --bun storybook dev -p 6006 --force-build-preview",
+    "build": "bunx --bun vite build",
+    "build:storybook": "bunx --bun storybook build --docs --output-dir storybook",
+    "build:storybook:bun": "bunx --bun storybook build --docs --output-dir storybook"
   },
-  "packageManager": "yarn@4.6.0"
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "packageManager": "yarn@4.6.0",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@chromatic-com/storybook": "^3",
+    "@storybook/addon-a11y": "^8.6.0",
+    "@storybook/addon-coverage": "^1.0.5",
+    "@storybook/addon-essentials": "^8.6.7",
+    "@storybook/addon-interactions": "^8.6.7",
+    "@storybook/addon-onboarding": "^8.6.7",
+    "@storybook/blocks": "^8.6.7",
+    "@storybook/react": "^8.6.7",
+    "@storybook/react-vite": "^8.6.7",
+    "@storybook/test": "^8.6.7",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react-swc": "^3.8.0",
+    "ajv": "^8.17.1",
+    "es-proj": "^1.5.0",
+    "prop-types": "^15.8.1",
+    "storybook": "^8.6.7",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0",
+    "vite-plugin-dts": "^4.5.0"
+  }
 }
